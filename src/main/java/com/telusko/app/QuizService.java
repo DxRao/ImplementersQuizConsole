@@ -21,33 +21,35 @@ public class QuizService
     public void playQuiz() {
     	
     	int score = 0;
+    	
     	Scanner scan = new Scanner(System.in);
     	System.out.println("Welcome the Java student to Implementers Java Quiz." );
     	System.out.println("Please enter 1 to play the quiz or 2 to Quit the Quiz: "  );
     	int choice = scan.nextInt();
+    	
     	if (choice == 1) {
     		
-    		System.out.println("Welcome the Java Mentor to Implementers Java Quiz." );
+    		System.out.println("Welcome to the Java Mentor to Implementers Java Quiz." );
     		
     		for(Question q : questions)
     		{        	
     			System.out.println("Please read the following question to ask the student to enter the answer from following options: ");
-    			System.out.println("Q: " + q.getTitle());
+    			System.out.println("Q:" + q.getQid() + " " + q.getTitle());
     			System.out.println("Options for Answer: " + q.getOption1() + "  " + q.getOption2() + "  " + q.getOption3() + "  " + q.getOption4() + " : ");
     			int ch = scan.nextInt();
             
     			if(Integer.parseInt(q.getAnswer()) == ch) {
-            	score = score + 2;
+    				score = score + 2;
     			}
     			else {
-            	score = score - 1;
+    				score = score - 1;
     			}
     		}//for
     		
     		System.out.println("Score of the student is: " + score + "." );
     		System.out.println("Thanks for playing the Implementors Quiz");
     		
-    	}//if
+    	}//Outer if
     	else{
     		
     		System.out.println("Thank you. Come later");    		
