@@ -22,8 +22,10 @@ public class QuizService
     	
     	int score = 0;
     	
+    	try {
+    		
     	Scanner scan = new Scanner(System.in);
-    	System.out.println("Welcome the Java student to Implementers Java Quiz." );
+    	System.out.println("Welcome to the Java student to Implementers Java Quiz." );
     	System.out.println("Please enter 1 to play the quiz or 2 to Quit the Quiz: "  );
     	int choice = scan.nextInt();
     	
@@ -34,8 +36,8 @@ public class QuizService
     		for(Question q : questions)
     		{        	
     			System.out.println("Please read the following question to ask the student to enter the answer from following options: ");
-    			System.out.println("Q:" + q.getQid() + " " + q.getTitle());
-    			System.out.println("Options for Answer: " + q.getOption1() + "  " + q.getOption2() + "  " + q.getOption3() + "  " + q.getOption4() + " : ");
+    			System.out.println("Q-" + q.getQid() + ": " + q.getTitle());
+    			System.out.println("Answer options: " + q.getOption1() + "  " + q.getOption2() + "  " + q.getOption3() + "  " + q.getOption4() + " : ");
     			int ch = scan.nextInt();
             
     			if(Integer.parseInt(q.getAnswer()) == ch) {
@@ -53,6 +55,17 @@ public class QuizService
     	else{
     		
     		System.out.println("Thank you. Come later");    		
-    	}    	    	
+    	}
+    	
+    	}//try
+    	catch(InputMismatchException imme) {
+    		
+    		System.out.println("Wrong input value. Please enter 1 or 2: ");
+    		
+    	}
+    	catch(Exception e) {
+    		
+    		System.out.println("Wrong input. Start over and try again. ");
+    	}
     }
 }
